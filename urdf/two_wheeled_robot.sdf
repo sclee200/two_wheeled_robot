@@ -1,0 +1,202 @@
+<sdf version='1.7'>
+  <model name='two_wheeled_robot'>
+    <link name='base_footprint'>
+      <inertial>
+        <pose>0.043963 0 0.170261 0 -0 0</pose>
+        <mass>50.164</mass>
+        <inertia>
+          <ixx>0.756777</ixx>
+          <ixy>3.19064e-16</ixy>
+          <ixz>0.171367</ixz>
+          <iyy>2.26467</iyy>
+          <iyz>1.17097e-31</iyz>
+          <izz>2.55546</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_footprint_fixed_joint_lump__base_link_collision'>
+        <pose>0 0 0.19 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.7 0.39 0.2</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__front_caster_collision_1'>
+        <pose>0.217 0 0.09 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.09</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_footprint_fixed_joint_lump__lidar_link_collision_2'>
+        <pose>0.215 0 0.32 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.18</length>
+            <radius>0.0508</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='base_footprint_fixed_joint_lump__base_link_visual'>
+        <pose>0 0 0.14 1.5708 -0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://two_wheeled_robot/meshes/robot_base.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__front_caster_visual_1'>
+        <pose>0.217 0 0.09 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.09</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='base_footprint_fixed_joint_lump__lidar_link_visual_2'>
+        <pose>0.215 0 0.32 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.18</length>
+            <radius>0.0508</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='drivewhl_l_joint' type='revolute'>
+      <pose relative_to='base_footprint'>-0.221 0.23 0.14 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>drivewhl_l_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.1415</lower>
+          <upper>3.1415</upper>
+          <effort>30</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='drivewhl_l_link'>
+      <pose relative_to='drivewhl_l_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <mass>110.5</mass>
+        <inertia>
+          <ixx>0.5746</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.5746</iyy>
+          <iyz>0</iyz>
+          <izz>1.0829</izz>
+        </inertia>
+      </inertial>
+      <collision name='drivewhl_l_link_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.06</length>
+            <radius>0.14</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='drivewhl_l_link_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.06</length>
+            <radius>0.14</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='drivewhl_r_joint' type='revolute'>
+      <pose relative_to='base_footprint'>-0.221 -0.23 0.14 0 -0 0</pose>
+      <parent>base_footprint</parent>
+      <child>drivewhl_r_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.1415</lower>
+          <upper>3.1415</upper>
+          <effort>30</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='drivewhl_r_link'>
+      <pose relative_to='drivewhl_r_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <mass>110.5</mass>
+        <inertia>
+          <ixx>0.5746</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.5746</iyy>
+          <iyz>0</iyz>
+          <izz>1.0829</izz>
+        </inertia>
+      </inertial>
+      <collision name='drivewhl_r_link_collision'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.06</length>
+            <radius>0.14</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='drivewhl_r_link_visual'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.06</length>
+            <radius>0.14</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

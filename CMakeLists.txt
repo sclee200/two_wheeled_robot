@@ -20,13 +20,26 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(ament_cmake_python REQUIRED)
+find_package(rclpy REQUIRED)
+
+# Include cpp "include" directory
+include_directories(include)
+
 
 install(
-  DIRECTORY config launch maps meshes models params rviz src urdf worlds
+  DIRECTORY config include launch maps meshes models params rviz src urdf worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
-
+# Install Python modules
+ament_python_install_package(${PROJECT_NAME})
+ 
+# Install Python executables
+install(PROGRAMS
+  scripts/lift_controller.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 
 if(BUILD_TESTING)
